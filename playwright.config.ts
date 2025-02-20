@@ -114,10 +114,11 @@ export default defineConfig<TestOptions>({
   ],
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:4200/',
+  webServer: {
+    command: 'npm run start',
+    url: 'http://localhost:4200/',
+    timeout: 120 * 1000,
   //   reuseExistingServer: true
     // reuseExistingServer: !process.env.CI,
-  // },
+   },
 });
