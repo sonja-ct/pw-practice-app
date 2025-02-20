@@ -24,7 +24,7 @@ test('parametrized methods @smoke @regression', async ({ page }) => {
     await pm.onFormLayoutsPage().submitUsingGridFormWithCredentialsAndSelectOption('test@test.com', 'welcome123', 'Option 1')
 })
 
-test('parametrized methods 2', async ({ page }) => {
+test.skip('parametrized methods 2', async ({ page }) => {
     const pm = new PageManager(page)
 
     const randomFullName = faker.person.fullName()

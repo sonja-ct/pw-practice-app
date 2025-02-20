@@ -42,9 +42,8 @@ jobs:
       with:
         name: allure-report
         path: ./allure-report
-    - name: Start Allure Report Server
-      if: always()	
+    - name: Serve Allure Report
       run: |
-       nohup npx allure open ./allure-report --port 4000 > allure.log 2>&1 &
-       echo "🔗 **Click to view Allure Report:** [Allure Report](http://localhost:4000)"
-    
+        nohup allure serve allure-results > allure.log 2>&1 &
+        echo "🔗 Click to view the Allure Report (only available during workflow run):"
+        echo "http://localhost:4040"
