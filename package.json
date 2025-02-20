@@ -8,7 +8,13 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve"
+    "start": "ng serve",
+    "pageObjects-chrome": "npx playwright test usePageObjects.spec.ts --project=chromium",
+    "pageObjects-firefox": "npx playwright test usePageObjects.spec.ts --project=firefox",
+    "pageObjects-all-sequential": "npm run pageObjects-chrome && npm run pageObjects-firefox",
+    "pageObjects-all-parallel": "npm run pageObjects-chrome & npm run pageObjects-firefox",
+    "autoWaiting-dev": "cross-env URL=http://uitestingplayground.com/ajax npx playwright test autoWaiting.spec.ts --project=chromium",
+    "test-dev": "cross-env DEV=1 npx playwright test first-test.spec.ts --project=chromium"
   },
   "dependencies": {
     "@angular/animations": "^14.2.12",
@@ -58,11 +64,16 @@
     "@angular/compiler-cli": "^14.2.12",
     "@angular/language-service": "14.2.12",
     "@compodoc/compodoc": "^1.1.19",
+    "@faker-js/faker": "^9.5.0",
     "@fortawesome/fontawesome-free": "^5.2.0",
+    "@playwright/test": "^1.50.1",
     "@types/leaflet": "1.2.3",
     "@types/node": "^12.12.70",
+    "allure-playwright": "^3.2.0",
     "codelyzer": "^0.0.28",
     "conventional-changelog-cli": "^2.2.2",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
     "npm-run-all": "4.0.2",
     "rimraf": "2.6.1",
     "stylelint": "^15.6.0",
