@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 import { TestOptions } from './testOptions';
+import { Status } from "allure-js-commons";
+import * as os from "node:os";
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -49,7 +51,38 @@ export default defineConfig<TestOptions>({
     ['html'],
     ['json', { outputFile: 'test-results/jsonReport.json' }],
     ['junit', { outputFile: 'test-results/junitReport.xml' }],
-    ['allure-playwright']
+    ['allure-playwright', {
+      resultsDir: "allure-results",
+      detail: true,
+      suiteTitle: true,
+      links: {
+        issue: {
+          nameTemplate: "Issue #%s",
+          urlTemplate: "https://issues.example.com/%s",
+        },
+        tms: {
+          nameTemplate: "TMS #%s",
+          urlTemplate: "https://tms.example.com/%s",
+        },
+        jira: {
+          urlTemplate: (v) => `https://jira.example.com/browse/${v}`,
+        },
+      },
+      categories: [
+        {
+          name: "foo",
+          messageRegex: "bar",
+          traceRegex: "baz",
+          matchedStatuses: [Status.FAILED, Status.BROKEN],
+        },
+      ],
+      environmentInfo: {
+        os_platform: os.platform(),
+        os_release: os.release(),
+        os_version: os.version(),
+        node_version: process.version,
+      },
+    },]
   ],
   /* Configure projects for major browsers */
   projects: [

@@ -1,5 +1,6 @@
 import { test } from '@playwright/test'
 import { faker } from '@faker-js/faker'
+import * as allure from "allure-js-commons";
 
 import { PageManager } from '../page-objects/pageManger'
 
@@ -8,6 +9,10 @@ test.beforeEach(async ({ page }) => {
 })
 
 test('navigate to form page @smoke', async ({ page }) => {
+    await allure.issue("AUTH-123", "Related issue");
+  await allure.tms("TMS-456", "Related TMS issue");
+  await allure.link("JIRA-777", "Related Jira issue", "jira");
+  await allure.link("https://example.com/", "Project website");
     const pm = new PageManager(page)
 
     await pm.navigateTo().formLayoutsPage()
@@ -24,7 +29,7 @@ test('parametrized methods @smoke @regression', async ({ page }) => {
     await pm.onFormLayoutsPage().submitUsingGridFormWithCredentialsAndSelectOption('test@test.com', 'welcome123', 'Option 1')
 })
 
-test.skip('parametrized methods 2', async ({ page }) => {
+test('parametrized methods 2', async ({ page }) => {
     const pm = new PageManager(page)
 
     const randomFullName = faker.person.fullName()
