@@ -41,3 +41,8 @@ jobs:
       with:
         name: allure-report
         path: ./allure-report
+    - name: Start Allure Report Server
+      run: |
+       nohup npx allure open ./allure-report --port 4000 > allure.log 2>&1 &
+       echo "🔗 **Click to view Allure Report:** [Allure Report](http://localhost:4000)"
+    
