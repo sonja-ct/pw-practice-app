@@ -33,10 +33,10 @@ test('parametrized methods 2', async ({ page }) => {
     await pm.onFormLayoutsPage().submitUsingGridFormWithCredentialsAndSelectOption(process.env.USER_NAME, process.env.PASSWORD, 'Option 2')
     await pm.onFormLayoutsPage().inlineFormwithCredentials('John Smith', 'John@test.com', true)
     await page.screenshot({ path: 'screenshots/forms-layouts.png' })
-const buffer = await page.screenshot()
-console.log('screenshot buffer '+buffer.toString('base64'))
+// const buffer = await page.screenshot()
+// console.log('screenshot buffer '+buffer.toString('base64'))
     await pm.onFormLayoutsPage().inlineFormwithCredentials(randomFullName, randomEmail, true)
-    await page.locator('nb-card', { hasText: 'Inline form' }).screenshot({ path: 'screenshots/inline-form.png' })
+    // await page.locator('nb-card', { hasText: 'Inline form' }).screenshot({ path: 'screenshots/inline-form.png' })
 })
 
 test('parametrized methods datepicker', async ({ page }) => {
