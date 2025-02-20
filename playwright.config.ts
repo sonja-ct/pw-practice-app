@@ -40,15 +40,15 @@ export default defineConfig<TestOptions>({
     trace: 'on-first-retry',
     video: {
       mode: 'retain-on-failure',
-      size: {
-        width: 1920, height: 1080
-      }
+      // size: {
+      //   width: 1920, height: 1080
+      // }
     }
   },
   reporter: [
     ['html'],
     ['json', { outputFile: 'test-results/jsonReport.json' }],
-    ['junit',{outputFile: 'test-results/junitReport.xml'}],
+    ['junit', { outputFile: 'test-results/junitReport.xml' }],
     ['allure-playwright']
   ],
   /* Configure projects for major browsers */
@@ -118,7 +118,7 @@ export default defineConfig<TestOptions>({
     command: 'npm run start',
     url: 'http://localhost:4200/',
     timeout: 120 * 1000,
-  //   reuseExistingServer: true
+    reuseExistingServer: true
     // reuseExistingServer: !process.env.CI,
-   },
+  },
 });
